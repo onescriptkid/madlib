@@ -31,7 +31,7 @@ Created script:
 ```
 ### 🐳 Barebones script - from docker
 ```shell
-docker run -v /tmp:/tmp -it onescriptkid/scripit -s
+docker run -v /tmp:/tmp -it onescriptkid/scripit -s -a0
 ...
 Created script:
 
