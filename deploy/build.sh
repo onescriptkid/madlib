@@ -14,6 +14,7 @@ setup() {
   GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
   GIT_HASH=$(git rev-parse HEAD)
   GIT_SHORT_HASH=$(git rev-parse --short HEAD)
+  GIT_DESCRIBE=$(git describe --dirty --tags --long)
 }
 
 run() {
@@ -22,6 +23,7 @@ run() {
 
   docker tag scriptit onescriptkid/scriptit:latest
   docker tag scriptit onescriptkid/scriptit:"$GIT_SHORT_HASH"
+  docker tag scriptit onescriptkid/scriptit:"$GIT_DESCRIBE"
 }
 
 setup
