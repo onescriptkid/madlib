@@ -20,24 +20,18 @@ Cookie-cutter for autogenerating bash scripts. Writes the boilerplate so *script
 
 Follow the series of prompts after cloning and calling `script.sh`. 
 
-### 🐳 Default script - from docker
+### 💥 Barebones script - from source
 
-```shell
-docker run -v /tmp:/tmp -it onescriptkid/scriptit --
+```
+git clone git@github.com:onescriptkid/scriptit && pushd scriptit > /dev/null
+./scriptit.sh -s -a0 barebones.sh
 ...
 Created script:
 
-        /tmp/scriptit-XXXXoGjHjL/scriptit_script.sh
+        ~/onescriptkid/scriptit/barebones.sh
 ```
-### 🐳 Barebones script - from docker
-```shell
-docker run -v /tmp:/tmp -it onescriptkid/scripit -s -a0
-...
-Created script:
 
-        /tmp/scriptit-XXXXoGjHjL/scriptit_script.sh
-```
-### 💥 Default script - from source
+### 💥 Script with prompts - from source
 
 ```shell
 git clone git@github.com:onescriptkid/scriptit && pushd scriptit > /dev/null
@@ -47,15 +41,22 @@ Created script:
 
         ~/onescriptkid/scriptit/script_that_requires_argparsing.sh
 ```
-### 💥 Barebones script - from source
-
-```
-git clone git@github.com:onescriptkid/scriptit && pushd scriptit > /dev/null
-./scriptit -s -a0 barebones.sh
+### 🐳 Barebones script - from docker
+```shell
+docker run -v /tmp:/tmp -it onescriptkid/scriptit -s -a0
 ...
 Created script:
 
-        ~/onescriptkid/scriptit/barebones.sh
+        /tmp/scriptit-XXXXoGjHjL/scriptit_script.sh
+```
+### 🐳 Script with prompts - from docker
+
+```shell
+docker run -v /tmp:/tmp -it onescriptkid/scriptit --
+...
+Created script:
+
+        /tmp/scriptit-XXXXoGjHjL/scriptit_script.sh
 ```
 
 ## 🌲 Dependencies
@@ -75,7 +76,7 @@ Created script:
 ./test/test_bash_script_dir.sh
 
 ...
-test_absolute /tmp/scripit-XXX/script.sh
+test_absolute /tmp/scriptit-XXX/script.sh
 REALPATH   is: /tmp/scriptit-NS1SFLpaz7
 SCRIPT_DIR is: /tmp/scriptit-NS1SFLpaz7
 

@@ -20,7 +20,7 @@ begin() {
 }
 
 test_absolute() {
-  echo "test_absolute /tmp/scripit-XXX/script.sh"
+  echo "test_absolute /tmp/scriptit-XXX/script.sh"
 
   # Setup absolute test
   cat <<- EOF >"$SCRATCH/echo_script_dir"
