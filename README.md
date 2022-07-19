@@ -37,13 +37,6 @@ Created script:
 
         /tmp/scriptit-XXXXoGjHjL/scriptit_script.sh
 ```
-### 💥 Barebones script - from source
-
-```
-git clone git@github.com:onescriptkid/scriptit && pushd scriptit > /dev/null
-scriptit -s -a0 barebones.sh
-```
-
 ### 💥 Default script - from source
 
 ```shell
@@ -54,11 +47,15 @@ Created script:
 
         ~/onescriptkid/scriptit/script_that_requires_argparsing.sh
 ```
-### Barebones script - from source
+### 💥 Barebones script - from source
 
 ```
 git clone git@github.com:onescriptkid/scriptit && pushd scriptit > /dev/null
-scriptit -s barebones.sh
+./scriptit -s -a0 barebones.sh
+...
+Created script:
+
+        ~/onescriptkid/scriptit/barebones.sh
 ```
 
 ## 🌲 Dependencies
