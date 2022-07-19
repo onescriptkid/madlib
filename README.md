@@ -60,11 +60,20 @@ Created script:
 ```
 
 ## 🌲 Dependencies
+
+Older versions of **Bash 4.X / 3.X** and Perl should work, but are untested
+
  - Bash `5.0.17(1)`
  - Perl `v5.30.0`
  - Ubuntu `20.04`
- - mawk `1.3.4 20200120`
- - sed `(GNU sed) 4.7`
+ - *Yaml Parser requires*
+   - sed `(GNU sed) 4.7`
+   - mawk `1.3.4 20200120`
+
+Ubuntu should already have these deps, but if they're missing
+```
+sudo apt update && sudo apt install perl bash sed mawk -y
+```
 
 ## ⚙️ For devs,
 ### To test locally,
@@ -90,7 +99,7 @@ SCRIPT_DIR is: /tmp/scriptit-NS1SFLpaz7/abc/d ef/hij
 
 ```
 
-## For Mainteners,
+## 😇 For Maintainers,
 ### To build the docker image
 
 `./deploy/build.sh` adds the repo contents to the Dockerfile and adds tags.
@@ -114,4 +123,9 @@ Login with `docker login -u onescriptkid`
 
 ```
 ./deploy/push.sh
+...
+dc62e246cb08: Layer already exists 
+a8df7183ce0b: Layer already exists 
+1ad27bdd166b: Layer already exists 
+v0.0.1-1-g557e9e0: digest: sha256:aa52c11054c87c939a24e5d62e974dfa4551ad4ed5d898fd4a19b5d8ee7d4ade size: 2401
 ```
