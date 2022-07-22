@@ -52,7 +52,7 @@ Created script:
 ### 🐳 Script with prompts - from docker
 
 ```shell
-docker run -v /tmp:/tmp -it onescriptkid/scriptit --
+docker run -v /tmp:/tmp -it onescriptkid/scriptit
 ...
 Created script:
 
