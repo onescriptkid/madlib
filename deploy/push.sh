@@ -24,7 +24,7 @@ run() {
   docker push onescriptkid/scriptit:latest
   docker push onescriptkid/scriptit:"$GIT_SHORT_HASH"
   docker push onescriptkid/scriptit:"$GIT_DESCRIBE"
-  docker tag scriptit onescriptkid/scriptit:"$GIT_VERSION"
+  docker push onescriptkid/scriptit:"$GIT_VERSION"
 }
 
 setup
