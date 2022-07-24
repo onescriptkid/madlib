@@ -17,7 +17,7 @@ setup() {
   GIT_SHORT_HASH=$(git rev-parse --short HEAD)
   GIT_VERSION=$(git describe --tags --abbrev=0 --match "v[0-9]*")
 }
-}
+
 
 run() {
   echo "$0"
