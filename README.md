@@ -100,6 +100,19 @@ SCRIPT_DIR is: /tmp/scriptit-NS1SFLpaz7/abc/d ef/hij
 ```
 
 ## 😇 For Maintainers,
+
+### To cut a new version,
+
+List the top tag `vX.X.X`
+
+```
+git describe --tags --abbrev=0 --match "v[0-9]*"
+```
+
+Push a new tag `vX.X.X+1`
+```
+git tag -a "v1.0.2" -m "Release v1.0.2"
+```
 ### To build the docker image
 
 `./deploy/build.sh` adds the repo contents to the Dockerfile and adds tags.
