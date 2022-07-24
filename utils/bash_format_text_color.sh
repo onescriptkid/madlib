@@ -23,13 +23,13 @@ print_debug() {
 }
 print_info() { printf "${ESC_WHITE}$*${ESC_RESET}\n"; }
 print_warning() { printf "${ESC_YELLOW}$*${ESC_RESET}\n"; }
-print_error() { printf "${ESC_RED}$*${ESC_RESET}\n"; }
-print_critical() { printf "${ESC_BRIGHT_RED}$*${ESC_RESET}\n"; }
+print_error() { >&2 printf "${ESC_RED}$*${ESC_RESET}\n"; }
+print_critical() { >&2 printf "${ESC_BRIGHT_RED}$*${ESC_RESET}\n"; }
 
 print_header() { printf "${ESC_WHITE}${ESC_BOLD}$*${ESC_RESET}\n"; }
 print_body() { printf "${ESC_WHITE}$*${ESC_RESET}\n"; }
 print_caption() { printf "${ESC_WHITE}${ESC_ITALIC}$*${ESC_RESET}\n"; }
 print_help() { printf "${ESC_CYAN}$*${ESC_RESET}\n"; }
 print_success() { printf "${ESC_GREEN}$*${ESC_RESET}\n"; }
-print_failure() { printf "${ESC_RED}${ESC_BOLD}$*${ESC_RESET}\n"; }
+print_failure() { >&2 printf "${ESC_RED}${ESC_BOLD}$*${ESC_RESET}\n"; }
 # END TEXT FOMATTING - COLORED

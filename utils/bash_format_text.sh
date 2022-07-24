@@ -5,13 +5,13 @@ print_debug() {
 }
 print_info() { printf "$*\n"; }
 print_warning() { printf "$*\n"; }
-print_error() { printf "$*\n"; }
-print_critical() { printf "$*\n"; }
+print_error() { >&2 printf "$*\n"; }
+print_critical() { >&2 printf "$*\n"; }
 
 print_header() { printf "$*\n"; }
 print_body() { printf "> $*\n"; }
 print_caption() { printf "  > $*\n"; }
 print_help() { printf "$*\n"; }
 print_success() { printf "$*\n"; }
-print_failure() { printf "$*\n"; }
+print_failure() { >&2 printf "$*\n"; }
 # END TEXT FOMATTING - UNCOLORED
