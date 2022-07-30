@@ -8,6 +8,7 @@ setup() {
 
   # Directory of the executed script
   SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
+  ls -lah
 
   # Delightful git commands
   GIT_REPO=$(git rev-parse --show-toplevel)
