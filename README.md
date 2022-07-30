@@ -64,7 +64,6 @@ Created script:
 Older versions of **Bash 4.X / 3.X** and Perl should work, but are untested
 
  - Bash `5.0.17(1)`
- - Perl `v5.30.0`
  - Ubuntu `20.04`
  - *Yaml Parser requires*
    - sed `(GNU sed) 4.7`

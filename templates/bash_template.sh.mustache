@@ -1,26 +1,22 @@
 #!/usr/bin/env bash
 ###################################################################
-# Script Name       : <SCRIPTIT_SCRIPT_NAME>
+# Script Name       : {{SCRIPTIT_SCRIPT_NAME}}
 # Description       : <description>
 # Author       	    : <anonymous>                                                
-# Email             : <anoymous@gmail.com> 
+# Email             : <anonymous@gmail.com> 
 ###################################################################
 
 # Setup script
 setup() {
   :
-### BEGIN SCRIPTIT_TOGGLE_UNOFFCIAL_BASH_STRICT_MODE
-### END SCRIPTIT_TOGGLE_UNOFFCIAL_BASH_STRICT_MODE
+{{SCRIPTIT_UNOFFCIAL_BASH_STRICT_MODE_CONTENT}}
 
-### BEGIN SCRIPTIT_TOGGLE_SCRIPT_DIR
-### END SCRIPTIT_TOGGLE_SCRIPT_DIR
+{{SCRIPTIT_SCRIPT_DIR_CONTENT}}
 
-### BEGIN SCRIPTIT_TOGGLE_GIT
-### END SCRIPTIT_TOGGLE_GIT
+{{SCRIPTIT_GIT_CONTENT}}
 }
 
-### BEGIN SCRIPTIT_TOGGLE_FORMAT_TEXT_COLOR
-### END SCRIPTIT_TOGGLE_FORMAT_TEXT_COLOR
+{{SCRIPTIT_FORMAT_TEXT_CONTENT}}
 
 
 # Show help dialog to user 
@@ -60,10 +56,8 @@ finish() {
   exit $exit_code
 }
 
-### BEGIN SCRIPTIT_TOGGLE_PARSE_ARGS
-### END SCRIPTIT_TOGGLE_PARSE_ARGS
-### BEGIN SCRIPTIT_TOGGLE_YAML_PARSER
-### END SCRIPTIT_TOGGLE_YAML_PARSER
+{{SCRIPTIT_PARSE_ARGS_CONTENT}}
+{{SCRIPTIT_YAML_PARSER_CONTENT}}
 
 # Begins script execution
 run() {
@@ -73,7 +67,6 @@ run() {
 }
 
 setup
-### BEGIN SCRIPTIT_NAME_PARSE_ARGS
-### END SCRIPTIT_NAME_PARSE_ARGS
+{{SCRIPTIT_NAME_PARSE_ARGS_CONTENT}}
 run
 

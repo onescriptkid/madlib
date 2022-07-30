@@ -5,7 +5,6 @@
 # Author       	    : onescriptkid                                                
 # Email             : onescriptkid@gmail.com
 # Bash versioh      : GNU bash, version 5.0.17(1)-release
-# Perl version      : v5.30.0
 ###################################################################
 
 
@@ -403,76 +402,68 @@ create_scratch_directory(){
   print_debug "Creating scratch dir $SCRATCH"
 }
 
-generate_script(){
-  print_debug "Generating script from template.."
+generate_script_mo(){
+  print_debug "Generating script from template (mo).."
 
   # Save original directory to later output script to correct location
   ORIGINAL_DIR=$(pwd)
   pushd "$SCRATCH" > /dev/null
 
+  # Export script_name to be used in mustache template
+  export SCRIPTIT_SCRIPT_NAME
+
   # Copy bash_template to scratch directory
-  cp "$SCRIPT_DIR/templates/bash_template.sh" "$SCRATCH"/"$SCRIPTIT_SCRIPT_NAME"
+  set -a
+  cp "$SCRIPT_DIR/templates/bash_template.sh.mustache" "$SCRATCH"/"$SCRIPTIT_SCRIPT_NAME"
 
   # Apply bash strict mode
   if [ "$SCRIPTIT_TOGGLE_UNOFFICIAL_BASH_STRICT_MODE" = "1"  ]; then 
-    SCRIPTIT_0=$(<"$SCRIPT_DIR/utils/bash_unofficial_bash_strictmode.sh")
+    SCRIPTIT_UNOFFCIAL_BASH_STRICT_MODE_CONTENT=$(<"$SCRIPT_DIR/utils/bash_unofficial_bash_strictmode.sh")
   else
-    SCRIPTIT_0=""
+    SCRIPTIT_UNOFFCIAL_BASH_STRICT_MODE_CONTENT=""
   fi
-  export SCRIPTIT_0
-  perl -0pi -e 'BEGIN{undef $/;} s/### BEGIN SCRIPTIT_TOGGLE_UNOFFCIAL_BASH_STRICT_MODE.*### END SCRIPTIT_TOGGLE_UNOFFCIAL_BASH_STRICT_MODE/$ENV{SCRIPTIT_0}/smg' "$SCRATCH"/"$SCRIPTIT_SCRIPT_NAME"
 
   # Apply script_dir
   if [ "$SCRIPTIT_TOGGLE_SCRIPT_DIR" = "1"  ]; then 
-    SCRIPTIT_1=$(<"$SCRIPT_DIR/utils/bash_script_dir.sh")
+    SCRIPTIT_SCRIPT_DIR_CONTENT=$(<"$SCRIPT_DIR/utils/bash_script_dir.sh")
   else
-    SCRIPTIT_1=""
+    SCRIPTIT_SCRIPT_DIR_CONTENT=""
   fi
-  export SCRIPTIT_1
-  perl -0pi -e 'BEGIN{undef $/;} s/### BEGIN SCRIPTIT_TOGGLE_SCRIPT_DIR.*### END SCRIPTIT_TOGGLE_SCRIPT_DIR/$ENV{SCRIPTIT_1}/smg' "$SCRATCH"/"$SCRIPTIT_SCRIPT_NAME"
 
   # Apply git
   if [ "$SCRIPTIT_TOGGLE_GIT" = "1"  ]; then 
-    SCRIPTIT_2=$(<"$SCRIPT_DIR/utils/bash_git.sh")
+    SCRIPTIT_GIT_CONTENT=$(<"$SCRIPT_DIR/utils/bash_git.sh")
   else
-    SCRIPTIT_2=""
+    SCRIPTIT_GIT_CONTENT=""
   fi
-  export SCRIPTIT_2
-  perl -0pi -e 'BEGIN{undef $/;} s/### BEGIN SCRIPTIT_TOGGLE_GIT.*### END SCRIPTIT_TOGGLE_GIT/$ENV{SCRIPTIT_2}/smg' "$SCRATCH"/"$SCRIPTIT_SCRIPT_NAME"
 
   # Apply colors
   if [ "$SCRIPTIT_TOGGLE_FORMAT_TEXT" = "1"  ]; then 
-    SCRIPTIT_3=$(<"$SCRIPT_DIR/utils/bash_format_text_color.sh")
+    SCRIPTIT_FORMAT_TEXT_CONTENT=$(<"$SCRIPT_DIR/utils/bash_format_text_color.sh")
   else
-    SCRIPTIT_3=""
+    SCRIPTIT_FORMAT_TEXT_CONTENT=$(<"$SCRIPT_DIR/utils/bash_format_text.sh")
   fi
-  export SCRIPTIT_3
-  perl -0pi -e 'BEGIN{undef $/;} s/### BEGIN SCRIPTIT_TOGGLE_FORMAT_TEXT_COLOR.*### END SCRIPTIT_TOGGLE_FORMAT_TEXT_COLOR/$ENV{SCRIPTIT_3}/smg' "$SCRATCH"/"$SCRIPTIT_SCRIPT_NAME"
 
   # Apply parse_args
   if [ "$SCRIPTIT_TOGGLE_PARSE_ARGS" = "1"  ]; then 
-    SCRIPTIT_4=$(<"$SCRIPT_DIR/utils/bash_parse_args.sh")
+    SCRIPTIT_PARSE_ARGS_CONTENT=$(<"$SCRIPT_DIR/utils/bash_parse_args.sh")
   else
-    SCRIPTIT_4=""
+    SCRIPTIT_PARSE_ARGS_CONTENT=""
   fi
-  export SCRIPTIT_4
-  perl -0pi -e 'BEGIN{undef $/;} s/### BEGIN SCRIPTIT_TOGGLE_PARSE_ARGS.*### END SCRIPTIT_TOGGLE_PARSE_ARGS/$ENV{SCRIPTIT_4}/smg' "$SCRATCH"/"$SCRIPTIT_SCRIPT_NAME"
 
   # Apply parse_args part 2
-  if [ "$SCRIPTIT_TOGGLE_PARSE_ARGS" = "1"  ]; then 
-    perl -0pi -e 'BEGIN{undef $/;} s/### BEGIN SCRIPTIT_NAME_PARSE_ARGS.*### END SCRIPTIT_NAME_PARSE_ARGS/read_args \"\$@\"/smg' "$SCRATCH"/"$SCRIPTIT_SCRIPT_NAME"
+  if [ "$SCRIPTIT_TOGGLE_PARSE_ARGS" = "1"  ]; then
+    SCRIPTIT_NAME_PARSE_ARGS_CONTENT="read_args \"\$@\""
   else
-    perl -0pi -e 'BEGIN{undef $/;} s/### BEGIN SCRIPTIT_NAME_PARSE_ARGS.*### END SCRIPTIT_NAME_PARSE_ARGS//smg' "$SCRATCH"/"$SCRIPTIT_SCRIPT_NAME"
+    SCRIPTIT_NAME_PARSE_ARGS_CONTENT=""
   fi
 
   # Apply yaml parser
   if [ "$SCRIPTIT_TOGGLE_YAML_PARSER" = "1"  ]; then 
-    SCRIPTIT_5=$(<"$SCRIPT_DIR/utils/bash_yaml_parser.sh")
+    SCRIPTIT_TOGGLE_YAML_PARSER_CONTENT=$(<"$SCRIPT_DIR/utils/bash_yaml_parser.sh")
   else
-    SCRIPTIT_5=""
+    SCRIPTIT_TOGGLE_YAML_PARSER_CONTENT=""
   fi
-  export SCRIPTIT_5
-  perl -0pi -e 'BEGIN{undef $/;} s/### BEGIN SCRIPTIT_TOGGLE_YAML_PARSER.*### END SCRIPTIT_TOGGLE_YAML_PARSER/$ENV{SCRIPTIT_5}/smg' "$SCRATCH"/"$SCRIPTIT_SCRIPT_NAME"
 
   # If a user set the scriptname, copy the script
   SCRIPTIT_OUTPUT=""
@@ -482,6 +473,11 @@ generate_script(){
   else
     SCRIPTIT_OUTPUT="$SCRATCH/$SCRIPTIT_SCRIPT_NAME"
   fi
+
+  # Find and replace with mustache templating
+  chmod 755 "$SCRIPT_DIR"/mo
+  "$SCRIPT_DIR"/mo "$SCRIPT_DIR/templates/bash_template.sh.mustache" > "$SCRIPTIT_OUTPUT"
+  set +a
 
   # Make the script executable
   chmod 755 "$SCRIPTIT_OUTPUT" 
@@ -501,4 +497,4 @@ set_defaults
 read_args "$@"
 prompts
 create_scratch_directory
-generate_script
+generate_script_mo
