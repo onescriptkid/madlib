@@ -1,6 +1,6 @@
-![Bash](https://img.shields.io/badge/bash-5.0.17(1)-blue)
-![Perl](https://img.shields.io/badge/perl-v5.30.0-9cf)
-![Perl](https://img.shields.io/badge/ubuntu-20.04-purple)
+[![Bash](https://img.shields.io/badge/bash-5.0.17(1)-blue)](https://www.gnu.org/software/bash/)
+[![Ubuntu](https://img.shields.io/badge/ubuntu-20.04-purple)](https://releases.ubuntu.com/20.04/)
+[![Mo](https://img.shields.io/badge/mo-2.3.3-teal)](https://github.com/tests-always-included/mo)
 
 # Scriptit
 
@@ -10,11 +10,12 @@ Cookie-cutter for autogenerating bash scripts. Writes the boilerplate so *script
 
 **The template includes ...**
 - [unofficial bash strict mode](http://redsymbol.net/articles/unofficial-bash-strict-mode/)
-- script dir env var
-- git env var
-- colored output
-- arg parsing
-- etc
+- [SCRIPT_DIR](https://stackoverflow.com/questions/59895/how-do-i-get-the-directory-where-a-bash-script-is-located-from-within-the-script) environment variable
+- [git](https://stackoverflow.com/questions/949314/how-do-i-get-the-hash-for-the-current-commit-in-git) environment variables
+- colored output - <span style="color:red">fail</span> / <span style="color:green">success</span>
+- parsing arguments
+- interpreting yaml
+- *and more ...*
 
 ## 🚀 Getting Started
 
@@ -61,7 +62,7 @@ Created script:
 
 ## 🌲 Dependencies
 
-Older versions of **Bash 4.X / 3.X** and Perl should work, but are untested
+Older versions of **Bash 4.X / 3.X** and should work, but are untested
 
  - Bash `5.0.17(1)`
  - Ubuntu `20.04`
@@ -71,7 +72,7 @@ Older versions of **Bash 4.X / 3.X** and Perl should work, but are untested
 
 Ubuntu should already have these deps, but if they're missing
 ```
-sudo apt update && sudo apt install perl bash sed mawk -y
+sudo apt update && sudo apt install bash sed mawk -y
 ```
 
 ## ⚙️ For devs,
