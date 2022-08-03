@@ -60,6 +60,13 @@ Created script:
         /tmp/madlib-XXXXoGjHjL/madlib_script.sh
 ```
 
+### 🇸🇴 See it live! 
+
+Download example [output](https://raw.githubusercontent.com/onescriptkid/madlib/master/examples/example.sh) via curl
+```
+curl https://raw.githubusercontent.com/onescriptkid/madlib/master/examples/example.sh > /tmp/example.sh && chmod +x /tmp/example.sh
+```
+
 ## 🌲 Dependencies
 
 Older versions of **Bash 4.X / 3.X** should work, but are untested
