@@ -62,7 +62,7 @@ Created script:
 
 ## 🌲 Dependencies
 
-Older versions of **Bash 4.X / 3.X** and should work, but are untested
+Older versions of **Bash 4.X / 3.X** should work, but are untested
 
  - Bash `5.0.17(1)`
  - Ubuntu `20.04`
@@ -70,7 +70,7 @@ Older versions of **Bash 4.X / 3.X** and should work, but are untested
    - sed `(GNU sed) 4.7`
    - mawk `1.3.4 20200120`
 
-Ubuntu should already have these deps, but if they're missing
+If missing, install with
 ```
 sudo apt update && sudo apt install bash sed mawk -y
 ```

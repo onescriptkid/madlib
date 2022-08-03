@@ -49,11 +49,14 @@ NEW_TAG="$VNUM1.$VNUM2.$VNUM3"
 echo "($VERSION) updating $CURRENT_VERSION to $NEW_TAG"
 
 #get current hash and see if it already has a tag
+echo "- Getting git commit"
 GIT_COMMIT=`git rev-parse HEAD`
+echo "- Getting needs_tag"
 NEEDS_TAG=`git describe --contains $GIT_COMMIT 2>/dev/null`
 
 #only tag if no tag already
 #to publish, need to be logged in to npm, and with clean working directory: `npm login; git stash`
+echo "- Checking if needs_tag"
 if [ -z "$NEEDS_TAG" ]; then
   echo "Tagged with $NEW_TAG"
   git push --tags
