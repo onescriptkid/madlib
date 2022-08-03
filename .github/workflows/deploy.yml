@@ -25,6 +25,9 @@ jobs:
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
     - name: Build
+      run: ./deploy/increment.sh -v patch
+
+    - name: Build
       run: ./deploy/build.sh
 
     - name: Push

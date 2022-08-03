@@ -21,10 +21,10 @@ setup() {
 
 run() {
   echo "$0"
-  docker push onescriptkid/scriptit:latest
-  docker push onescriptkid/scriptit:"$GIT_SHORT_HASH"
-  docker push onescriptkid/scriptit:"$GIT_DESCRIBE"
-  docker push onescriptkid/scriptit:"$GIT_VERSION"
+  docker push onescriptkid/madlib:latest
+  docker push onescriptkid/madlib:"$GIT_SHORT_HASH"
+  docker push onescriptkid/madlib:"$GIT_DESCRIBE"
+  docker push onescriptkid/madlib:"$GIT_VERSION"
 }
 
 setup

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 ###################################################################
-# Script Name       : {{SCRIPTIT_SCRIPT_NAME}}
+# Script Name       : {{MADLIB_SCRIPT_NAME}}
 # Description       : <description>
 # Author       	    : <anonymous>                                                
 # Email             : <anonymous@gmail.com> 
@@ -9,14 +9,14 @@
 # Setup script
 setup() {
   :
-{{SCRIPTIT_UNOFFCIAL_BASH_STRICT_MODE_CONTENT}}
+{{MADLIB_UNOFFCIAL_BASH_STRICT_MODE_CONTENT}}
 
-{{SCRIPTIT_SCRIPT_DIR_CONTENT}}
+{{MADLIB_SCRIPT_DIR_CONTENT}}
 
-{{SCRIPTIT_GIT_CONTENT}}
+{{MADLIB_GIT_CONTENT}}
 }
 
-{{SCRIPTIT_FORMAT_TEXT_CONTENT}}
+{{MADLIB_FORMAT_TEXT_CONTENT}}
 
 
 # Show help dialog to user 
@@ -56,8 +56,8 @@ finish() {
   exit $exit_code
 }
 
-{{SCRIPTIT_PARSE_ARGS_CONTENT}}
-{{SCRIPTIT_YAML_PARSER_CONTENT}}
+{{MADLIB_PARSE_ARGS_CONTENT}}
+{{MADLIB_YAML_PARSER_CONTENT}}
 
 # Begins script execution
 run() {
@@ -67,6 +67,6 @@ run() {
 }
 
 setup
-{{SCRIPTIT_NAME_PARSE_ARGS_CONTENT}}
+{{MADLIB_NAME_PARSE_ARGS_CONTENT}}
 run
 
