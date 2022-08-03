@@ -2,6 +2,6 @@
 set -euo pipefail
 # Allows 
 if [ "${1#-}" != "${1}" ] || [ -z "$(command -v "${1}")" ] || { [ -f "${1}" ] && ! [ -x "${1}" ]; }; then
-  set -- scriptit.sh "$@"
+  set -- madlib.sh "$@"
 fi
 exec "$@"

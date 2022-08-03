@@ -21,12 +21,12 @@ setup() {
 
 run() {
   echo "$0"
-  docker build -f "$GIT_REPO/Dockerfile" -t scriptit "$GIT_REPO"
+  docker build -f "$GIT_REPO/Dockerfile" -t madlib "$GIT_REPO"
 
-  docker tag scriptit onescriptkid/scriptit:latest
-  docker tag scriptit onescriptkid/scriptit:"$GIT_SHORT_HASH"
-  docker tag scriptit onescriptkid/scriptit:"$GIT_DESCRIBE"
-  docker tag scriptit onescriptkid/scriptit:"$GIT_VERSION"
+  docker tag madlib onescriptkid/madlib:latest
+  docker tag madlib onescriptkid/madlib:"$GIT_SHORT_HASH"
+  docker tag madlib onescriptkid/madlib:"$GIT_DESCRIBE"
+  docker tag madlib onescriptkid/madlib:"$GIT_VERSION"
 }
 
 setup

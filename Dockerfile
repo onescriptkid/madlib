@@ -7,14 +7,14 @@ RUN addgroup -g 1000 onescriptkid
 RUN adduser -D -u 1000 -G onescriptkid -s /bin/bash onescriptkid
 
 # Copy repository contents into iamge
-RUN mkdir -p /scriptit
-WORKDIR /scriptit
-COPY templates /scriptit/templates
-COPY utils /scriptit/utils
-COPY scriptit.sh /scriptit/scriptit.sh
-COPY mo /scriptit/mo
+RUN mkdir -p /madlib
+WORKDIR /madlib
+COPY templates /madlib/templates
+COPY utils /madlib/utils
+COPY madlib.sh /madlib/madlib.sh
+COPY mo /madlib/mo
 RUN chmod 755 ./mo
-RUN chown 1000:1000 -R /scriptit
+RUN chown 1000:1000 -R /madlib
 
 # Add entrypoint
 COPY deploy/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
@@ -22,7 +22,7 @@ RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 # Grant exec
-RUN chmod 755 /scriptit/scriptit.sh
-ENV PATH="/scriptit:${PATH}"
+RUN chmod 755 /madlib/madlib.sh
+ENV PATH="/madlib:${PATH}"
 USER onescriptkid
-CMD [ "/scriptit/scriptit.sh" ]
+CMD [ "/madlib/madlib.sh" ]

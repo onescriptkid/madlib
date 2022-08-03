@@ -8,7 +8,7 @@ setup () {
   GIT_REPO=$(git rev-parse --show-toplevel)
 
   # Create and Enter the tmp dir
-  SCRATCH=$(mktemp -d -t scriptit-XXXXXXXXXX)
+  SCRATCH=$(mktemp -d -t madlib-XXXXXXXXXX)
   pushd "$SCRATCH" > /dev/null
 
   echo ""
@@ -20,7 +20,7 @@ begin() {
 }
 
 test_absolute() {
-  echo "test_absolute /tmp/scriptit-XXX/script.sh"
+  echo "test_absolute /tmp/madlib-XXX/script.sh"
 
   # Setup absolute test
   cat <<- EOF >"$SCRATCH/echo_script_dir"
