@@ -52,12 +52,17 @@ echo "($VERSION) updating $CURRENT_VERSION to $NEW_TAG"
 echo "- Getting git commit"
 GIT_COMMIT=`git rev-parse HEAD`
 echo "- Getting needs_tag"
+set +e
 NEEDS_TAG=`git describe --contains $GIT_COMMIT 2>/dev/null`
+set -e
 
 #only tag if no tag already
 #to publish, need to be logged in to npm, and with clean working directory: `npm login; git stash`
 echo "- Checking if needs_tag"
 if [ -z "$NEEDS_TAG" ]; then
+  git config user.email "onescriptkid@gmail.com"
+  git config user.name  "onescriptkid"
+  git tag -a "$NEW_TAG" -m "Version: $NEW_TAG"
   echo "Tagged with $NEW_TAG"
   git push --tags
   git push
